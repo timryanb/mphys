@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,9 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Variable Naming Conventions" href="naming_conventions.html" />
@@ -43,7 +45,7 @@
           <div class="body" role="main">
             
   <div class="section" id="builders">
-<span id="id1"></span><h1>Builders<a class="headerlink" href="#builders" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Builders<a class="headerlink" href="#builders" title="Permalink to this heading">¶</a></h1>
 <p>In large multiphysics problems, creation and connection of the OpenMDAO can be complicated and time-consuming.
 The design of Mphys is based on builder classes in order to reduce the burden on the user.
 Most of the assembly of the OpenMDAO model with Mphys is handled by a set of builder helper objects.</p>
@@ -193,6 +195,25 @@ this solver. Transfer schemes can return multiple subsystems</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Builders</a><ul>
+<li><a class="reference internal" href="#mphys.builder.Builder"><code class="docutils literal notranslate"><span class="pre">Builder</span></code></a><ul>
+<li><a class="reference internal" href="#mphys.builder.Builder.initialize"><code class="docutils literal notranslate"><span class="pre">Builder.initialize()</span></code></a></li>
+<li><a class="reference internal" href="#mphys.builder.Builder.get_mesh_coordinate_subsystem"><code class="docutils literal notranslate"><span class="pre">Builder.get_mesh_coordinate_subsystem()</span></code></a></li>
+<li><a class="reference internal" href="#mphys.builder.Builder.get_coupling_group_subsystem"><code class="docutils literal notranslate"><span class="pre">Builder.get_coupling_group_subsystem()</span></code></a></li>
+<li><a class="reference internal" href="#mphys.builder.Builder.get_pre_coupling_subsystem"><code class="docutils literal notranslate"><span class="pre">Builder.get_pre_coupling_subsystem()</span></code></a></li>
+<li><a class="reference internal" href="#mphys.builder.Builder.get_post_coupling_subsystem"><code class="docutils literal notranslate"><span class="pre">Builder.get_post_coupling_subsystem()</span></code></a></li>
+<li><a class="reference internal" href="#mphys.builder.Builder.get_number_of_nodes"><code class="docutils literal notranslate"><span class="pre">Builder.get_number_of_nodes()</span></code></a></li>
+<li><a class="reference internal" href="#mphys.builder.Builder.get_ndof"><code class="docutils literal notranslate"><span class="pre">Builder.get_ndof()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
 <h3><a href="../index.html">Table of Contents</a></h3>
 <p class="caption" role="heading"><span class="caption-text">Mphys Basics</span></p>
 <ul class="current">
@@ -225,7 +246,7 @@ this solver. Transfer schemes can return multiple subsystems</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -251,7 +272,7 @@ this solver. Transfer schemes can return multiple subsystems</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, NASA.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>
 </html>
