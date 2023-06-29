@@ -147,7 +147,7 @@ class Top(Multipoint):
         self.connect('dv_struct', 'cruise.dv_struct')
 
 class TestTACS(unittest.TestCase):
-    N_PROCS=1
+    N_PROCS=2
     def setUp(self):
         prob = om.Problem()
         prob.model = Top()
