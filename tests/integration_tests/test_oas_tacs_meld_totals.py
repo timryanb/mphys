@@ -147,7 +147,7 @@ class Top(Multipoint):
         self.connect('dv_struct', 'cruise.dv_struct')
 
 class TestTACS(unittest.TestCase):
-    N_PROCS=2
+    N_PROCS=1
     def setUp(self):
         prob = om.Problem()
         prob.model = Top()
@@ -164,6 +164,7 @@ class TestTACS(unittest.TestCase):
         data = self.prob.check_totals(of=['cruise.wing.CL', 'cruise.ks_vmfailure', 'cruise.mass'],
                                       wrt=['aoa', 'dv_struct'], method='fd', form='central',
                                       step=1e-5, step_calc='rel')
+        print(data)
         assert_check_totals(data, atol=1e99, rtol=1e-6)
 
 
