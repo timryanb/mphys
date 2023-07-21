@@ -55,6 +55,7 @@ jobs:
           git clone -q https://github.com/OpenMDAO/OpenMDAO;
           cd OpenMDAO;
           pip install .[all];
+          pip install openmdao==3.26;
           cd ../mphys;
           pip install -e .
           echo "=============================================================";
