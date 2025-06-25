@@ -45,7 +45,7 @@ jobs:
           echo "=============================================================";
           echo "Install PETSc";
           echo "=============================================================";
-          mamba install -c conda-forge mpi4py "petsc>=3.22.3" petsc4py -q -y;
+          mamba install -c conda-forge mpi4py "petsc>=3.22.3" petsc4py -y;
           echo "=============================================================";
           echo "Install OpenMDAO";
           echo "=============================================================";
