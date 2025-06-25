@@ -46,6 +46,7 @@ jobs:
           echo "Create conda environment";
           echo "=============================================================";
           conda install -c conda-forge mamba -q -y;
+          mamba install -c conda-forge sysroot_linux-64=2.17 -q -y;
           mamba install -c conda-forge openmpi openmpi-mpicxx -q -y;
           pip install --upgrade pip;
           echo "=============================================================";
