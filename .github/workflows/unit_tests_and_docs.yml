@@ -43,7 +43,6 @@ jobs:
           conda activate OpenMDAO;
           pip install --upgrade pip;
           mamba install -c conda-forge lapack -q -y;
-          conda install numpy=1.26 scipy=1.13 -q -y;
           echo "=============================================================";
           echo "Install PETSc";
           echo "=============================================================";
