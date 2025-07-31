@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../../_static/style.css?v=90ca181f" />
     <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -43,6 +43,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A OpenMDAO class for automated promotion of MPhys variables</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
@@ -76,29 +77,29 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">_mphys_promote_by_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iotype</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">subsystem</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mphys_subsystems</span><span class="p">:</span>
             <span class="n">promoted</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">tagged_variables</span> <span class="o">=</span> <span class="n">subsystem</span><span class="o">.</span><span class="n">get_io_metadata</span><span class="p">(</span><span class="n">iotypes</span><span class="o">=</span><span class="n">iotype</span><span class="p">,</span>
-                                                         <span class="n">metadata_keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">],</span>
-                                                         <span class="n">tags</span><span class="o">=</span><span class="n">tag</span><span class="p">)</span>
+            <span class="n">tagged_variables</span> <span class="o">=</span> <span class="n">subsystem</span><span class="o">.</span><span class="n">get_io_metadata</span><span class="p">(</span>
+                <span class="n">iotypes</span><span class="o">=</span><span class="n">iotype</span><span class="p">,</span> <span class="n">metadata_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tags&quot;</span><span class="p">],</span> <span class="n">tags</span><span class="o">=</span><span class="n">tag</span>
+            <span class="p">)</span>
             <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">tagged_variables</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-                <span class="n">variable</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="s1">&#39;prom_name&#39;</span><span class="p">]</span>
+                <span class="n">variable</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="s2">&quot;prom_name&quot;</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">variable</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">promoted</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">promotes</span><span class="p">(</span><span class="n">subsystem</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">any</span><span class="o">=</span><span class="p">[</span><span class="n">variable</span><span class="p">])</span>
                     <span class="n">promoted</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_mphys_promote_time_derivatives</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_mphys_promote_by_tag</span><span class="p">([</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">],</span> <span class="s1">&#39;mphys_time_derivative&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mphys_promote_by_tag</span><span class="p">([</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">],</span> <span class="s2">&quot;mphys_time_derivative&quot;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_mphys_promote_coupling_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_mphys_promote_by_tag</span><span class="p">([</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">],</span> <span class="s1">&#39;mphys_coupling&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mphys_promote_by_tag</span><span class="p">([</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">],</span> <span class="s2">&quot;mphys_coupling&quot;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_mphys_promote_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_mphys_promote_by_tag</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;mphys_input&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mphys_promote_by_tag</span><span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;mphys_input&quot;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_mphys_promote_mesh_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_mphys_promote_by_tag</span><span class="p">([</span><span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">],</span> <span class="s1">&#39;mphys_coordinates&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mphys_promote_by_tag</span><span class="p">([</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">],</span> <span class="s2">&quot;mphys_coordinates&quot;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_mphys_promote_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_mphys_promote_by_tag</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="s1">&#39;mphys_result&#39;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mphys_promote_by_tag</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;mphys_result&quot;</span><span class="p">)</span></div>
 
 </pre></div>
 
@@ -133,6 +134,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../developers/new_multiphysics_problems.html">Extending the Scenario Library</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../references/citing_mphys.html">Citing MPhys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../references/papers_using_mphys.html">Papers Using MPhys</a></li>
 </ul>
 
@@ -166,7 +168,7 @@
     </div>
     <div class="footer" role="contentinfo">
     &#169; Copyright 2022, NASA.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     </div>
   </body>
 </html>
